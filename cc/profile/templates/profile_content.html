@@ -3,7 +3,7 @@
 <h2>{{ profile }}</h2>
 
 {% if profile == request.profile %}
-	<p><a href="{% url edit_profile %}">{% trans 'Edit My Profile' %}</a></p>
+	<p><a href="{% url 'edit_profile' %}">{% trans 'Edit My Profile' %}</a></p>
 {% endif %}
 
 {% if my_endorsement %}
@@ -13,7 +13,7 @@
 	{% plural %}
 		You have endorsed this user with <strong>{{ hearts }}</strong> hearts.
 	{% endblocktrans %}
-	<a href="{% url endorse_user profile.username %}">{% trans 'Edit' %}</a>
+	<a href="{% url 'endorse_user' profile.username %}">{% trans 'Edit' %}</a>
 </p>
 <hr>
 {% endif %}
@@ -37,7 +37,7 @@
 				<th>{% trans 'Home Location' %}</th>
 				<td>
 			{% if profile == request.profile %}
-					<a href="{% url locator %}?next={{ request.path }}"
+					<a href="{% url 'locator' %}?next={{ request.path }}"
 						>{{ profile.location.full_name }}</a>
 			{% else %}
 					{{ profile.location.full_name }}
@@ -66,12 +66,12 @@
 <h3>{% trans 'Relationships Summary' %}</h3>
 	{% if profile == request.profile %}
 		{% include "relationships_summary.html" %}
-		<p><a href="{% url relationships %}">{% trans 'More' %}</a></p>
+		<p><a href="{% url 'relationships' %}">{% trans 'More' %}</a></p>
 	{% else %}
 	<table class="data">
 		<tr title="{% blocktrans %}Max. trusted acknowledgements I
 					would accept from this user{% endblocktrans %}">
-			<th><a href="{% url profile_endorsements profile.username %}"
+			<th><a href="{% url 'profile_endorsements' profile.username %}"
 				>{% trans 'Reputation' %}</a>
 			</th>
 			<td>{% reputation profile request.profile %}</td>
@@ -101,7 +101,7 @@
 		</tr>
 		{% if account %}
 		<tr>
-			<th><a href="{% url relationship profile.username %}"
+			<th><a href="{% url 'relationship' profile.username %}"
 				>{% trans 'Balance with Me' %}</a>
 			</th>
 			<td>
@@ -115,7 +115,7 @@
 		{% endif %}
 	</table>
 
-	<p><a href="{% url profile_endorsements profile.username %}
+	<p><a href="{% url 'profile_endorsements' profile.username %}
 		">{% trans 'More' %}</a></p>
 	{% endif %}
 {% endif %}

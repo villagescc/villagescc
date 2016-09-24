@@ -18,30 +18,30 @@
 {% block subnav %}
 <ul>
 	<li class="{% block nav_feed_class %}{% endblock %}">
-		<a href="{% url feed %}"
+		<a href="{% url 'feed' %}"
 			>{% trans 'Feed' context "nav" %}</a></li>
 {% if request.profile %}
 	<li class="{% block nav_info_class %}{% endblock %}">
 		<a href="{{ request.profile.get_absolute_url }}"
 			>{% trans 'Info' context "nav" %}</a></li>
 	<li class="{% block nav_posts_class %}{% endblock %}">
-		<a href="{% url profile_posts request.profile.username %}"
+		<a href="{% url 'profile_posts' request.profile.username %}"
 			>{% trans 'Posts' context "nav" %}</a></li>
 	<li class="{% block nav_relationships_class %}{% endblock %}">
-		<a href="{% url relationships %}"
+		<a href="{% url 'relationships' %}"
 			>{% trans 'Relationships' context "nav" %}</a></li>
 </ul>
 <hr>
 <ul>
 	<li class="{% block nav_edit_profile_class %}{% endblock %}">
-		<a href="{% url edit_profile %}"
+		<a href="{% url 'edit_profile' %}"
 			>{% trans 'Edit My Profile' context "nav" %}</a></li>
 {% else %}
 	<li class="{% block nav_register_class %}{% endblock %}">
-		<a href="{% url check_invitation %}"
+		<a href="{% url 'check_invitation' %}"
 			>{% trans 'Join' context "nav" %}</a></li>
 	<li class="{% block nav_login_class %}{% endblock %}">
-		<a href="{% url login %}"
+		<a href="{% url 'login' %}"
 			>{% trans 'Login' context "nav" %}</a></li>
 {% endif %}
 </ul>

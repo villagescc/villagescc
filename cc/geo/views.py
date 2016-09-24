@@ -1,4 +1,4 @@
-from django.contrib.gis.utils import GeoIP
+from django.contrib.gis.geoip import GeoIP
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
@@ -61,7 +61,7 @@ def locator(request):
         if request.location:
 
             # TODO: Don't overwrite initial form data with geocoding javascript.
-            
+
             initial_lng, initial_lat = request.location.point.tuple
         else:
             # Do an IP geocode as a rough first guess.
@@ -75,7 +75,7 @@ def redirect_after_locator(request):
     if next and ':' not in next:  # Local redirects only -- no 'http://...'.
         return HttpResponseRedirect(next)
     return redirect('feed')
-    
+
 def get_geoip_coords(request):
     lat, lng = '', ''
     geoip = GeoIP()
@@ -86,4 +86,4 @@ def get_geoip_coords(request):
         lat = geoip_result.get('latitude', '')
         lng = geoip_result.get('longitude', '')
     return lat, lng
-    
+

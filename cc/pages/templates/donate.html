@@ -15,7 +15,7 @@
 
 <p>
 {% if request.profile %}
-	<a href="{% url acknowledge_user 'villages' %}"
+	<a href="{% url 'acknowledge_user' 'villages' %}"
 		>{% trans 'Acknowledge the work of Villages developers.' %}</a>
 {% else %}
 	{% blocktrans %}Acknowledge the work of Villages developers

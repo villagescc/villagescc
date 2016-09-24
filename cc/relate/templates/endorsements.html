@@ -7,7 +7,7 @@
 
 {% block pre_feed %}
 
-{% url relationships as url_relationships %}
+{% url 'relationships' as url_relationships %}
 <p>{% blocktrans %}Visit <a href="{{ url_relationships }}">Relationships</a>
 	for a more structured list of endorsements.{% endblocktrans %}</p>
 

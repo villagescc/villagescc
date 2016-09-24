@@ -22,7 +22,7 @@
 		willing to provide for your friend, trusting that by acknowledging
 		your gift, they will return the favour eventually.{% endblocktrans %}</p>
 
-	<p><a href="{% url how_it_works %}">{% trans 'Read more' %}</a></p>
+	<p><a href="{% url 'how_it_works' %}">{% trans 'Read more' %}</a></p>
 
 	<p>{% blocktrans %}If your friend accepts your invitation, this
 		endorsement will be <strong>public</strong>.{% endblocktrans %}</p>
@@ -54,7 +54,7 @@
 		hearts for each endorsement you receive.{% endblocktrans %}</p>
 {% endif %}
 
-<p><a href="{% url invitations_sent %}"
+<p><a href="{% url 'invitations_sent' %}"
 	>{% trans 'View pending sent invitations' %}</a></p>
 
 {% endblock %}

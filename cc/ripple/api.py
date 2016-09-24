@@ -82,7 +82,7 @@ class UserAccount(object):
     @property
     def owed_to_you(self):
         return self.balance >= 0 and self.balance or None
-    
+
     @property
     def owed_to_them(self):
         return self.balance < 0 and -self.balance or None
@@ -93,8 +93,8 @@ class UserAccount(object):
         return [UserEntry(entry, self.user) for entry
                 in self.creditline.account.entries.all().order_by(
                 '-payment__last_attempted_at')]
-        
-    
+
+
 class UserEntry(object):
     """
     Wrapper around Entry, with amounts from point of view of one partner.
@@ -119,7 +119,7 @@ class UserEntry(object):
     @property
     def abs_amount(self):
         return abs(self.entry.amount)
-    
+
     @property
     def received(self):
         if self.amount > 0:
@@ -150,7 +150,7 @@ class RipplePayment(object):
     FEED_TEMPLATE = 'acknowledgement_feed_item.html'
 
     DoesNotExist = ObjectDoesNotExist
-    
+
     def __init__(self, payment):
         self.payment = payment
 
@@ -160,7 +160,7 @@ class RipplePayment(object):
             return getattr(self.payment, name)
         raise AttributeError("%s does not have attribute '%s'." % (
                 self.__class__, name))
-        
+
     @property
     def date(self):
         return self.payment.last_attempted_at or self.payment.submitted_at
@@ -172,7 +172,7 @@ class RipplePayment(object):
     @property
     def text(self):
         return self.memo
-    
+
     @property
     def feed_poster(self):
         return self.payer
@@ -184,7 +184,7 @@ class RipplePayment(object):
     @property
     def feed_public(self):
         return False
-    
+
     def get_search_text(self):
         return [(self.memo, 'B'),
                 (self.payer.name, 'C'),
@@ -192,19 +192,19 @@ class RipplePayment(object):
                 (self.recipient.name, 'C'),
                 (self.recipient.username, 'C'),
                ]
-        
+
     @property
     @cache_on_object
     def payer(self):
         from cc.profile.models import Profile
         return Profile.objects.get(pk=self.payment.payer.alias)
-        
+
     @property
     @cache_on_object
     def recipient(self):
         from cc.profile.models import Profile
         return Profile.objects.get(pk=self.payment.recipient.alias)
-    
+
     @models.permalink
     def get_absolute_url(self):
         return 'view_acknowledgement', (self.id,)
@@ -213,7 +213,7 @@ class RipplePayment(object):
         return [UserEntry(entry, user) for entry in
                 self.payment.entries.filter(
                     account__creditlines__node__alias=user.id)]
-    
+
     @classmethod
     def get_by_id(cls, payment_id):
         try:
@@ -229,7 +229,7 @@ def get_nodes(profile1, profile2):
     node1, _ = Node.objects.get_or_create(alias=profile1.id)
     node2, _ = Node.objects.get_or_create(alias=profile2.id)
     return node1, node2
-    
+
 def accept_profiles(func):
     """
     Decorator for function that takes two Nodes, allowing it to take
@@ -242,7 +242,7 @@ def accept_profiles(func):
     profile_accepting_wrapper.__name__ = func.__name__
     profile_accepting_wrapper.__module__ = func.__module__
     return profile_accepting_wrapper
-    
+
 def get_user_accounts(profile):
     return [UserAccount(cl, profile) for cl in
             CreditLine.objects.filter(node__alias=profile.id)]
@@ -255,7 +255,7 @@ def get_account(profile, partner_profile):
     cl = CreditLine.objects.get(node=node, account=account)
     return UserAccount(cl, profile)
 
-@transaction.commit_on_success(using='ripple')
+@transaction.atomic(using='ripple')
 def update_credit_limit(endorsement):
     # Get endorsement recipient's creditline.
     account = get_or_create_account_from_profiles(
@@ -264,7 +264,7 @@ def update_credit_limit(endorsement):
         node__alias=endorsement.recipient_id, account=account)
     creditline.limit = endorsement.weight
     creditline.save()
-    
+
     _invalidate_reputation_cache()
 
 @accept_profiles
@@ -332,4 +332,4 @@ def _reputation_cache_version():
 def _invalidate_reputation_cache():
     cache.add(REPUTATION_VERSION_KEY, 1)
     cache.incr(REPUTATION_VERSION_KEY)
-    
+

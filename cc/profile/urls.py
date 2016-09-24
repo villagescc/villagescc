@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 from django.contrib.auth.views import logout
 
 from cc.feed.views import feed
@@ -23,7 +23,7 @@ urlpatterns = patterns(
     url(r'^profiles/([^/]+)/endorsements/$', 'profile_endorsements',
         name='profile_endorsements'),
     url(r'^profiles/([^/]+)/contact/$', 'contact', name='contact'),
-    url(r'^invite/$', 'invite', name='invite'),    
+    url(r'^invite/$', 'invite', name='invite'),
     url(r'^invitations/([^/]+)/$', 'invitation', name='invitation'),
     url(r'^invitations/$', 'invitations_sent', name='invitations_sent'),
     url(r'^request_invitation/$', 'request_invitation',

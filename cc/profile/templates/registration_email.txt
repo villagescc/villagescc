@@ -3,15 +3,15 @@
 
 {% blocktrans %}Begin by making sure you've filled out your profile to include a picture and a description of your skills and things you'd like to offer to the community:{% endblocktrans %}
 
-http://{{ domain }}{% url edit_profile %}
+http://{{ domain }}{% url 'edit_profile' %}
 
 {% blocktrans %}Next, check your feed for interesting people and posts in your neighbourhood:{% endblocktrans %}
 
-http://{{ domain }}{% url feed %}
+http://{{ domain }}{% url 'feed' %}
 
 {% blocktrans %}Don't forget to post anything immediate you'd like or can offer:{% endblocktrans %}
 
-http://{{ domain }}{% url new_post %}
+http://{{ domain }}{% url 'new_post' %}
 
 {% blocktrans %}If you have received this email in error, please reply and let us know so that we can remove your email address from the system.{% endblocktrans %}
 

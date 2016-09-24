@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls import patterns, url
 
 from cc.feed.views import feed
 from cc.post.models import Post

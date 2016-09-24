@@ -24,22 +24,22 @@
 <div class="head">
 	<div class="logo_nav_line extend"><div class="line page">
 		<h1 class="logo">
-			<a href="{% url home %}?logo"
+			<a href="{% url 'home' %}?logo"
 				title="{% trans 'Villages Cooperative Community' %}"
 				>Villages.cc</a>
 		</h1>
 		<ul class="site_nav nav">
-			<li><a href="{% url home %}">{% trans 'Home' %}</a></li>
+			<li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>
 			<li>
-				<form class="inline_form" action="{% url feed %}" method="get">
+				<form class="inline_form" action="{% url 'feed' %}" method="get">
 					<input id="global_search_input" class="instruction_input"
 						name="q" type="text" help="{% trans 'Search All' %}">
 				</form>
 			</li>
 		</ul>
 		<ul class="right_nav">
-			<li><a href="{% url about %}">{% trans 'About' %}</a></li>
-			<li><a href="{% url feedback %}">{% trans 'Feedback' %}</a></li>
+			<li><a href="{% url 'about' %}">{% trans 'About' %}</a></li>
+			<li><a href="{% url 'feedback' %}">{% trans 'Feedback' %}</a></li>
 		</ul>
 	</div></div>
 
@@ -82,11 +82,11 @@
 	{% block actions %}
 		<ul>
 			{% if not request.profile %}
-			<li><a href="{% url feed %}"
+			<li><a href="{% url 'feed' %}"
 				>{% trans 'Browse Marketplace' %}</a></li>
 			{% endif %}
 			<li class="{% block nav_location_class %}{% endblock %}">
-				<a href="{% url locator %}?next={{ request.path }}"
+				<a href="{% url 'locator' %}?next={{ request.path }}"
 					>{{ request.location|default:_('Location') }}</a></li>
 		</ul>
 		<hr>
@@ -95,22 +95,22 @@
 			<li><a href="{{ request.profile.get_absolute_url }}"
 				>{{ request.profile }}</a></li>
 			<li class="{% block nav_settings_class %}{% endblock %}">
-				<a href="{% url settings %}"
+				<a href="{% url 'settings' %}"
 					>{% trans 'Account Settings' %}</a></li>
-			<li><a href="{% url logout %}">{% trans 'Logout' %}</a></li>
+			<li><a href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>
 		</ul>
 		<hr>
 		<ul>
 			<li class="{% block nav_new_post_class %}{% endblock %}">
-				<a href="{% url new_post %}">{% trans 'New Post' %}</a></li>
+				<a href="{% url 'new_post' %}">{% trans 'New Post' %}</a></li>
 			<li class="{% block nav_invite_class %}{% endblock %}">
-				<a href="{% url invite %}"
+				<a href="{% url 'invite' %}"
 					>{% trans 'Invite A Friend' %}</a></li>
 			<li class="{% block nav_share_class %}{% endblock %}">
-				<a href="{% url share %}">{% trans 'Share' %}</a></li>
+				<a href="{% url 'share' %}">{% trans 'Share' %}</a></li>
 		{% else %}
-			<li><a href="{% url check_invitation %}">{% trans 'Join' %}</a></li>
-			<li><a href="{% url login %}?next={{ request.path }}"
+			<li><a href="{% url 'check_invitation' %}">{% trans 'Join' %}</a></li>
+			<li><a href="{% url 'login' %}?next={{ request.path }}"
 				>{% trans 'Login' %}</a></li>
 		{% endif %}
 		</ul>
