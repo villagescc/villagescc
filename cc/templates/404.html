@@ -11,8 +11,8 @@
 	A programmer has been informed of the broken link and if it was on our
 	site, it will be fixed as soon as possible.{% endblocktrans %}</p>
 
-{% url home as url_home %}
-{% url feedback as url_feedback %}
+{% url 'home' as url_home %}
+{% url 'feedback' as url_feedback %}
 <p>{% blocktrans %}Please <a href="{{ url_home }}">keep using the site</a>,
 	or <a href="{{ url_feedback }}">contact us</a> if you need further
 	assistance.{% endblocktrans %}</p>

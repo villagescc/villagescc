@@ -4,9 +4,6 @@ from django.core.serializers.base import DeserializationError
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-# Import introspection rules to allow south to migrate geo fields.
-from south.introspection_plugins import geodjango
-
 from cc.general.models import VarCharField
 
 class LocationDeserializationError(Exception):
@@ -19,13 +16,13 @@ class Location(models.Model):
     # - use bounding box only (__bboverlaps or && operator)
     # - use planar projection rather than spherical coordinates
     # - use spheroid=False for geography queries (not needed on planar projection)
-    
+
     point = models.PointField(geography=True)
     country = VarCharField(_("Country"))
     state = VarCharField(_("State/Province (Abbr.)"), blank=True)
     city = VarCharField(_("City"), blank=True)
     neighborhood = VarCharField(_("Neighbourhood"), blank=True)
-    
+
     objects = models.GeoManager()
 
     def __unicode__(self):
@@ -68,11 +65,11 @@ class Location(models.Model):
             del request.session[settings.LOCATION_SESSION_KEY]
         except KeyError:
             pass
-    
+
     def serialize(self):
         "Serialize location to JSON."
         return serializers.serialize('json', [self])
-        
+
     @classmethod
     def deserialize(cls, str_data):
         "Generate location from JSON output of serialize()."

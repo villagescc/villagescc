@@ -3,10 +3,10 @@
 
 {% blocktrans %}To view their profile, go to:{% endblocktrans %}
 
-http://{{ domain }}{% url profile profile.username %}
+http://{{ domain }}{% url 'profile' profile.username %}
 
 {% blocktrans %}To endorse them:{% endblocktrans %}
 
-http://{{ domain }}{% url endorse_user profile.username %}
+http://{{ domain }}{% url 'endorse_user' profile.username %}
 
 {% blocktrans %}Thank you for sharing Villages!{% endblocktrans %}

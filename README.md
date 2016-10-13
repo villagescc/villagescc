@@ -13,10 +13,9 @@ Installation
 This is a Django project.  Among other things, you'll need:
 
 * Python 2.6+
-* Django 1.4
+* Django 1.8
 * PostgreSQL 8.3+, PostGIS 1.5, psycopg2 (may be able to configure for other DBs)
 * Django-mediagenerator (incl. Sass, Compass)
-* South
 * Networkx
 * Maxmind GeoIP database
 

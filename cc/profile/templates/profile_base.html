@@ -16,30 +16,30 @@
 		<a href="{{ profile.get_absolute_url }}">{% trans 'Info' %}</a></li>
 
 	<li class="{% block nav_posts_class %}{% endblock %}">
-		<a href="{% url profile_posts profile.username %}"
+		<a href="{% url 'profile_posts' profile.username %}"
 			>{% trans 'Posts' %}</a></li>
 
 {% if request.profile %}
 	<li class="{% block nav_endorsements_class %}{% endblock %}">
-		<a href="{% url profile_endorsements profile.username %}"
+		<a href="{% url 'profile_endorsements' profile.username %}"
 			>{% trans 'Endorsements' context "nav" %}</a></li>
 
 	<li class="{% block nav_relationship_class %}{% endblock %}">
-		<a href="{% url relationship profile.username %}"
+		<a href="{% url 'relationship' profile.username %}"
 			>{% trans 'Relationship' context "nav" %}</a></li>
 </ul>
 <hr>
 <ul>
 	<li class="{% block nav_endorse_class %}{% endblock %}">
-		<a href="{% url endorse_user profile.username %}
+		<a href="{% url 'endorse_user' profile.username %}
 			">{% trans 'Endorse' context "nav" %}</a></li>
 
 	<li class="{% block nav_acknowledge_class %}{% endblock %}">
-		<a href="{% url acknowledge_user profile.username %}"
+		<a href="{% url 'acknowledge_user' profile.username %}"
 			>{% trans 'Acknowledge' context "nav" %}</a></li>
 
 	<li class="{% block nav_contact_class %}{% endblock %}">
-		<a href="{% url contact profile.username %}
+		<a href="{% url 'contact' profile.username %}
 			">{% trans 'Contact' context "nav" %}</a></li>
 {% endif %}
 </ul>

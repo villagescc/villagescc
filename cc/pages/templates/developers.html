@@ -8,13 +8,13 @@
 
 <h3>{% trans 'Developers' %}</h3>
 
-{% url profile 'ryan' as profile_ryan %}
+{% url 'profile' 'ryan' as profile_ryan %}
 <p>{% blocktrans %}Villages is developed by
 	<a href="{{ profile_ryan }}">Ryan Fugger</a>, founder of the
 	<a href="http://ripple-project.org/">Ripple Project</a>.
 	{% endblocktrans %}</p>
 
-{% url feedback as url_feedback %}
+{% url 'feedback' as url_feedback %}
 <p>{% blocktrans %}If have coding, web development, or other applicable
 	skills, believe in the concept, and would like to help out, please
 	<a href="{{ url_feedback }}">send a message</a>.

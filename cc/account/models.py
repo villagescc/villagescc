@@ -4,8 +4,6 @@ from datetime import datetime
 from django.db import models
 from django.db.models.signals import post_delete, post_save
 
-from south.modelsinspector import add_introspection_rules
-
 from cc.ripple import PRECISION, SCALE
 from cc.general.util import cache_on_object
 
@@ -31,26 +29,23 @@ select sum(trusted_balance) from (
 """
 
 class AmountField(models.DecimalField):
-    "Field for value amounts."    
+    "Field for value amounts."
     def __init__(self, *args, **kwargs):
         kwargs['max_digits'] = PRECISION
         kwargs['decimal_places'] = SCALE
         super(AmountField, self).__init__(*args, **kwargs)
 
-# Enable south migrations for custom fields.
-add_introspection_rules([], ["^cc\.general"])
-
 
 class Node(models.Model):
     "A node in the Ripple graph."
     alias = models.PositiveIntegerField(unique=True)  # Profile ID.
-    
+
     def __unicode__(self):
         return u"Node %d" % self.alias
 
     def __repr__(self):
         return "Node(%d)" % self.alias
-    
+
     def out_creditlines(self):
         return self.creditlines.all()
 
@@ -60,17 +55,17 @@ class Node(models.Model):
         cursor.execute(sql_template, (self.id,))
         row = cursor.fetchone()
         return row[0] or D('0')
-    
+
     def overall_balance(self):
         return self._balance_query(OVERALL_BALANCE_SQL)
-        
+
     def trusted_balance(self):
         """
         Return sum of all negative balances and all positive balances within
         credit limits.
         """
         return self._balance_query(TRUSTED_BALANCE_SQL)
-    
+
 class AccountManager(models.Manager):
     def create_account(self, node1, node2):
         """
@@ -105,14 +100,14 @@ class AccountManager(models.Manager):
         else:
             raise Account.MultipleObjectsReturned()
         return acct
-        
+
     def get_or_create_account(self, node1, node2):
         acct = self.get_account(node1, node2)
         if acct is None:
             acct = self.create_account(node1, node2)
         return acct
 
-    
+
 class Account(models.Model):
     """
     A mutual credit account that tracks IOUs between two nodes.
@@ -125,14 +120,14 @@ class Account(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
     objects = AccountManager()
-    
+
     def __unicode__(self):
         return u"Account %s" % self.id
 
     @property
     def pos_creditline(self):
         return self.creditlines.get(bal_mult=1)
-    
+
     @property
     def neg_creditline(self):
         return self.creditlines.get(bal_mult=-1)
@@ -140,11 +135,11 @@ class Account(models.Model):
     @property
     def pos_node(self):
         return self.pos_creditline.node
-    
+
     @property
     def neg_node(self):
         return self.neg_creditline.node
-    
+
 class CreditLine(models.Model):
     """
     One node's data for and view on a mutual credit account.
@@ -173,7 +168,7 @@ class CreditLine(models.Model):
     @property
     def partner(self):
         return self.partner_creditline.node
-    
+
     @property
     def in_limit(self):
         "Max obligations node will accept from partner."
@@ -190,9 +185,9 @@ class CreditLine(models.Model):
         from cc.payment import flow
 
         # TODO: Call from single external process -- not threadsafe!
-        
+
         flow.update_creditline_in_cached_graphs(instance)
-        
+
     @classmethod
     def post_delete(cls, sender, instance, **kwargs):
         # Delete partner creditline and account itself.

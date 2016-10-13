@@ -42,7 +42,7 @@ class Payment(models.Model):
         try:
             flow_graph = FlowGraph(self.payer, self.recipient)
             flow_links = flow_graph.min_cost_flow(self.amount)
-            with transaction.commit_on_success(using='ripple'):
+            with transaction.atomic(using='ripple'):
                 for creditline_id, amount in flow_links:
                     creditline = CreditLine.objects.get(pk=creditline_id)
                     Entry.objects.create_entry(
@@ -55,7 +55,7 @@ class Payment(models.Model):
 
             # TODO: Handle collisions better here so we can retry or give the
             # user an informative error message, rather than the server error page.
-            
+
             self.status = 'failed'
             self.save()
             if not isinstance(exc, PaymentError):
@@ -66,7 +66,7 @@ class Payment(models.Model):
             for creditline in (account.pos_creditline, account.neg_creditline):
                 update_creditline_in_cached_graphs(creditline)
 
-    @transaction.commit_on_success(using='ripple')
+    @transaction.atomic(using='ripple')
     def as_entry(self):
         """
         Performs this payment as a direct entry between payer and recipient.
@@ -90,7 +90,7 @@ class EntryManager(models.Manager):
             # with concurrent transactions.
 
             # TODO: Test with concurrent transactions.
-            
+
             if amount > 0:  # Test against positive account limit.
                 bal_upd_query = bal_upd_query.filter(
                     balance__lte=limit - amount)
@@ -102,7 +102,7 @@ class EntryManager(models.Manager):
             raise PaymentError("Limit exceeded on account %d." % account.id)
 
         # TODO: What if some other transaction alters the balance right here?
-        
+
         account = Account.objects.get(pk=account.id)  # Reload balance.
         new_balance = account.balance
         self.create(payment=payment, account=account, amount=amount,
@@ -119,7 +119,7 @@ class Entry(models.Model):
 
     class Meta:
         verbose_name_plural = 'Entries'
-    
+
     def __unicode__(self):
         return u"%s entry on %s" % (self.amount, self.account)
 

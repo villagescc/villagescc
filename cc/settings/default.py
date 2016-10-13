@@ -97,7 +97,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'cc.profile.middleware.ProfileMiddleware',
     'cc.geo.middleware.LocationMiddleware',
-    'django.middleware.transaction.TransactionMiddleware',
 )
 
 ROOT_URLCONF = 'cc.urls'
@@ -114,8 +113,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'django.contrib.gis',
     'django.contrib.humanize',
-    
-    'south',
+
     'mediagenerator',
 
     'cc.geo',
@@ -126,7 +124,7 @@ INSTALLED_APPS = (
     'cc.general',
     'cc.pages',
     'cc.admin',
-    
+
     # Ripple
     'cc.account',
     'cc.payment',
@@ -165,7 +163,7 @@ LOGGING = {
 
 # Media generator settings.
 DEV_MEDIA_URL = STATIC_URL
-PRODUCTION_MEDIA_URL = STATIC_URL 
+PRODUCTION_MEDIA_URL = STATIC_URL
 MEDIA_DEV_MODE = DEBUG
 GLOBAL_MEDIA_DIRS = (STATIC_ROOT,)
 
@@ -204,6 +202,8 @@ SESSION_COOKIE_SECURE = True
 LOCATION_COOKIE_NAME = 'location_id'
 LOCATION_COOKIE_AGE = timedelta(days=365)
 
+GEOIP_PATH = '/usr/share/GeoIP'
+
 LOCATION_SESSION_KEY = 'location_id'
 DEFAULT_LOCATION = ('49.2696243', '-123.0696036')  # East Vancouver.
 
@@ -219,7 +219,7 @@ TEST_RUNNER = 'cc.general.tests.AdvancedTestSuiteRunner'
 TEST_PACKAGES = ['cc']
 SOUTH_TESTS_MIGRATE = False
 
-_ = lambda s: s # dummy ugettext 
+_ = lambda s: s # dummy ugettext
 
 LANGUAGES=[
     ('en', _('English')),

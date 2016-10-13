@@ -9,11 +9,11 @@ import cc.ripple.api as ripple
 class EndorsementManager(models.Manager):
     def rebuild_trust_network(self):
         "Clear out all Profile.trusted_profiles and recreate from scratch."
-        cursor = connection.cursor()
-        cursor.execute("delete from profile_profile_trusted_profiles")
-        for endorsement in self.all():
-            endorsement.update_trust_network()
-        transaction.commit_unless_managed()
+        with transaction.atomic():
+            cursor = connection.cursor()
+            cursor.execute("delete from profile_profile_trusted_profiles")
+            for endorsement in self.all():
+                endorsement.update_trust_network()
 
 class Endorsement(models.Model):
     endorser = models.ForeignKey(Profile, related_name='endorsements_made')
@@ -26,12 +26,12 @@ class Endorsement(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     objects = EndorsementManager()
-    
+
     class Meta:
         unique_together = ('endorser', 'recipient')
 
     FEED_TEMPLATE = 'endorsement_feed_item.html'
-        
+
     def __unicode__(self):
         return u'%s endorses %s (%d)' % (
             self.endorser, self.recipient, self.weight)
@@ -39,7 +39,7 @@ class Endorsement(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return 'endorsement', (self.id,)
-    
+
     @property
     def date(self):
         """
@@ -64,7 +64,7 @@ class Endorsement(models.Model):
     @property
     def feed_poster(self):
         return self.endorser
-    
+
     def get_search_text(self):
         return [(self.text, 'B'),
                 (self.endorser.name, 'C'),
@@ -72,7 +72,7 @@ class Endorsement(models.Model):
                 (self.recipient.name, 'C'),
                 (self.recipient.username, 'C'),
                ]
-        
+
     def can_edit(self, profile):
         return self.endorser == profile
 
@@ -87,12 +87,12 @@ class Endorsement(models.Model):
         trusters = set(self.endorser.trusting_profiles.only('id'))
         trusters.add(self.endorser)
         for truster in trusters:
-            truster.trusted_profiles.add(*to_trust)        
-    
+            truster.trusted_profiles.add(*to_trust)
+
     @classmethod
     def get_by_id(cls, id):
         return cls.objects.get(pk=id)
-    
+
     @classmethod
     def post_save(cls, sender, instance, created, **kwargs):
         ripple.update_credit_limit(instance)
@@ -105,7 +105,7 @@ class Endorsement(models.Model):
         # TODO: Do something more efficient than rebuild trust network
         # from scratch here.
         cls.objects.rebuild_trust_network()
-            
+
 post_save.connect(Endorsement.post_save, sender=Endorsement,
                   dispatch_uid='relate.models')
 post_delete.connect(Endorsement.post_delete, sender=Endorsement,

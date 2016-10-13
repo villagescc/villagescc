@@ -58,7 +58,7 @@
 			{% endblocktrans %}
 			</td>
 	{% else %}
-			<th><a href="{% url endorse_user partner.username %}"
+			<th><a href="{% url 'endorse_user' partner.username %}"
 				>{% trans 'Endorse' %} {{ partner }}</a></th>
 	{% endif %}
 		</tr>
@@ -79,7 +79,7 @@
 		<tr>
 			<td>{{ entry.date|date }}</td>
 			<td>
-				<a href="{% url view_acknowledgement entry.payment_id %}"
+				<a href="{% url 'view_acknowledgement' entry.payment_id %}"
 					>{% entry_description entry request.profile %}</a>
 			</td>
 			<td class="number">{{ entry.received|default:"" }}</td>

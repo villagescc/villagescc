@@ -3,6 +3,6 @@
 
 {% blocktrans %}To see their profile, go to{% endblocktrans %}:
 
-http://{{ domain }}{% url profile profile.username %}
+http://{{ domain }}{% url 'profile' profile.username %}
 
 {% blocktrans %}Thanks for sharing Villages!{% endblocktrans %}

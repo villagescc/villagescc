@@ -2,4 +2,4 @@
 {{ text }}
 
 ----
-{% blocktrans context "email" %}Invite this person:{% endblocktrans %} http://{{ domain }}{% url invite %}?email={{ email }}
+{% blocktrans context "email" %}Invite this person:{% endblocktrans %} http://{{ domain }}{% url 'invite' %}?email={{ email }}

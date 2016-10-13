@@ -1,6 +1,5 @@
 from django.db import models
 
-from south.modelsinspector import add_introspection_rules
 
 class VarCharField(models.CharField):
     """
@@ -25,7 +24,7 @@ class VarCharField(models.CharField):
         # 'varchar' with no max length is equivalent to 'text' in Postgres,
         # but put 'varchar' so we can tell VarCharFields from TextFields
         # when we're looking at the db.
-        return 'varchar'    
+        return 'varchar'
 
 class EmailField(models.EmailField):
     """
@@ -39,9 +38,6 @@ class EmailField(models.EmailField):
         if 'max_length' not in kwargs:
             kwargs['max_length'] = self.MAX_EMAIL_LENGTH
         super(EmailField, self).__init__(*args, **kwargs)
-    
-# Enable south migrations for custom fields.
-add_introspection_rules([], ["^cc\.general"])
 
 # *** HACK ALERT ***
 # Load forms monkeypatch.

@@ -77,17 +77,17 @@
 				title="{% blocktrans with user=account.partner %}View Your Endorsement of {{ user }}{% endblocktrans %}"
 				>{{ account.in_limit }}</a>
 	{% else %}
-			<a href="{% url endorse_user account.partner.username %}"
+			<a href="{% url 'endorse_user' account.partner.username %}"
 				title="{% blocktrans with user=account.partner %}Endorse {{ user }}{% endblocktrans %}"
 				>0</a>
 	{% endif %}
 		</td>
 		<td class="number">
-			<a href="{% url relationship account.partner.username %}"
+			<a href="{% url 'relationship' account.partner.username %}"
 				title="{% blocktrans with user=account.partner %}View Relationship with {{ user }}{% endblocktrans %}"
 				>{{ account.owed_to_you|default_if_none:"" }}</a></td>
 		<td class="number">
-			<a href="{% url relationship account.partner.username %}"
+			<a href="{% url 'relationship' account.partner.username %}"
 				title="{% blocktrans with user=account.partner %}View Relationship with {{ user }}{% endblocktrans %}"
 				>{{ account.owed_to_them|default_if_none:"" }}</a></td>
 		<td class="number">

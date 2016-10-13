@@ -64,7 +64,7 @@ TRUSTED_SUBQUERY = (
     "feed_feeditem.poster_id in "
     "(select to_profile_id from profile_profile_trusted_profiles "
     "    where from_profile_id = %s)")
-                    
+
 
 class FeedManager(GeoManager):
     def get_feed_and_remaining(self, *args, **kwargs):
@@ -80,7 +80,7 @@ class FeedManager(GeoManager):
         else:
             items = []
         return items, count - len(items)
-    
+
     def get_feed_count(self, *args, **kwargs):
         return self._feed_query(*args, **kwargs).count()
 
@@ -92,7 +92,7 @@ class FeedManager(GeoManager):
 
         Takes a `limit` parameter that is the maximum number of items to return.
         """
-        limit = kwargs.pop('limit', settings.FEED_ITEMS_PER_PAGE)        
+        limit = kwargs.pop('limit', settings.FEED_ITEMS_PER_PAGE)
         query = self._feed_query(*args, **kwargs)[:limit]
         items = []
         for feed_item in query:
@@ -105,12 +105,12 @@ class FeedManager(GeoManager):
                 # TODO: Move deletion of orphan feed items to cron job.
                 feed_item.delete()
         return items
-    
+
     def _feed_query(self, profile=None, location=None, radius=None,
                     item_type=None, tsearch=None, trusted_only=False,
                     poster=None, recipient=None, up_to_date=None):
         "Build a query for feed items corresponding to a particular feed."
-        query = self.get_query_set().order_by('-date')
+        query = self.get_queryset().order_by('-date')
         if up_to_date:
             query = query.filter(date__lt=up_to_date)
 
@@ -134,7 +134,7 @@ class FeedManager(GeoManager):
                 select_params=[profile.id])
         if trusted_only and profile:
             query = query.extra(where=[TRUSTED_SUBQUERY], params=[profile.id])
-            
+
         if location and radius:
             query = query.filter(
                 # TODO: Bounding box query might be faster?
@@ -143,9 +143,9 @@ class FeedManager(GeoManager):
         if tsearch:
             query = query.extra(
                 where=["tsearch @@ plainto_tsquery(%s)"],
-                params=[tsearch])            
+                params=[tsearch])
         return query
-            
+
     def create_from_item(self, item):
         item_type = ITEM_TYPES[type(item)]
         feed_item = self.create(
@@ -158,13 +158,13 @@ class FeedManager(GeoManager):
             location=item.location)
         feed_item.update_tsearch(item.get_search_text())
 
-    
+
 class FeedItem(models.Model):
     """
     A denormalized record of feed data, merged for ease of ordering by date
     and selecting recent items without massive queries on several other tables
     and merging results every time.
-    
+
     Feed items are identified by (item_type, item_id) tuple.  They may have a
     location used for filtering feeds by proximity.  They may also specify
     particular recipient profiles whose feed they will appear in.  If the feed
@@ -183,9 +183,9 @@ class FeedItem(models.Model):
     item_id = models.PositiveIntegerField()
     location = models.ForeignKey(Location, null=True, blank=True)
     public = models.BooleanField()
-                               
+
     objects = FeedManager()
-    
+
     class Meta:
         unique_together = ('item_type', 'item_id')
 
@@ -224,10 +224,10 @@ class FeedItem(models.Model):
         sql = "update feed_feeditem set tsearch = (%s) where id = %%s" % (
             ' || '.join(weight_statements))
         params = snippets + [self.id]
-        cursor = connection.cursor()
-        cursor.execute(sql, params)
-        transaction.commit_unless_managed()
-    
+        with transaction.atomic():
+            cursor = connection.cursor()
+            cursor.execute(sql, params)
+
     @classmethod
     def create_feed_items(cls, sender, instance, created, **kwargs):
         """
@@ -243,7 +243,7 @@ class FeedItem(models.Model):
             cls.objects.filter(
                 item_type=item_type, item_id=instance.id).delete()
         cls.objects.create_from_item(instance)
-            
+
     @classmethod
     def delete_feed_items(cls, sender, instance, **kwargs):
         "Signal receiver to clean up feed items when an object is deleted."
@@ -251,7 +251,7 @@ class FeedItem(models.Model):
         if not item_type:
             return
         cls.objects.filter(item_type=item_type, item_id=instance.id).delete()
-        
+
 # Check for creating a new feed item whenever anything is saved.
 post_save.connect(FeedItem.create_feed_items, dispatch_uid='feed.models')
 

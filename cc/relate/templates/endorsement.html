@@ -28,7 +28,7 @@
 </div>
 
 {% if request.profile == endorsement.endorser %}
-	<p><a href="{% url endorse_user endorsement.recipient.username %}"
+	<p><a href="{% url 'endorse_user' endorsement.recipient.username %}"
 		>{% trans 'Edit' %}</a></p>
 {% endif %}
 

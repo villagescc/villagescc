@@ -12,20 +12,20 @@
 {% block content %}
 <div class="feed_type_filter nav"><ul>
 	<li class="{% block feed_all_class %}{% endblock %}">
-		<a href="{% url feed %}?{{ url_param_str }}"
+		<a href="{% url 'feed' %}?{{ url_param_str }}"
 			>{% trans 'All' %}</a></li>
 	<li class="{% block feed_people_class %}{% endblock %}">
-		<a href="{% url profiles %}?{{ url_param_str }}"
+		<a href="{% url 'profiles' %}?{{ url_param_str }}"
 			>{% trans 'People' %}</a></li>
 	<li class="{% block feed_posts_class %}{% endblock %}">
-		<a href="{% url posts %}?{{ url_param_str }}"
+		<a href="{% url 'posts' %}?{{ url_param_str }}"
 			>{% trans 'Posts' %}</a></li>
 	{% if user.is_authenticated %}
 	<li class="{% block feed_endorsements_class %}{% endblock %}">
-		<a href="{% url endorsements %}?{{ url_param_str }}"
+		<a href="{% url 'endorsements' %}?{{ url_param_str }}"
 			>{% trans 'Endorsements' %}</a></li>
 	<li class="{% block feed_acknowledgements_class %}{% endblock %}">
-		<a href="{% url acknowledgements %}?{{ url_param_str }}"
+		<a href="{% url 'acknowledgements' %}?{{ url_param_str }}"
 			>{% trans 'Acknowledgements' %}</a></li>
 	{% endif %}
 </ul></div>
