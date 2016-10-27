@@ -1,5 +1,3 @@
---find-links http://cddb-py.sourceforge.net/
-
 appdirs==1.4.0
 apsw==3.8.11.1.post1
 backports.ssl-match-hostname==3.4.0.2
@@ -9,7 +7,7 @@ bigfloat==0.3.0
 bitcoin==1.1.42
 bitcoin-python==0.3
 bitmerchant==0.1.8
-bitstring==3.1.4
+bitstring>=3.1.4
 blist==1.3.6
 cachetools==1.1.5
 CDDB==1.4
