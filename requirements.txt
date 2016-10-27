@@ -1,5 +1,4 @@
 --find-links http://cddb-py.sourceforge.net/
---trusted-host cddb-py.sourceforge.net
 
 appdirs==1.4.0
 apsw==3.8.11.1.post1
