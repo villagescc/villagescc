@@ -83,7 +83,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '',
     },
-    'second_db': {
+    'ripple': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'cc_db_two',
         'USER': 'simon',
