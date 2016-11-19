@@ -1,0 +1,15 @@
+.navbar-default .navbar-brand {
+  color: black; }
+
+.navbar-form input {
+  border-radius: 12px; }
+
+.navbar-default .navbar-nav, .navbar-default .navbar-right > li > a {
+  color: orange; }
+
+.active-home {
+  background: orange; }
+  .active-home a {
+    color: white !important; }
+
+/*# sourceMappingURL=main.css.map */
