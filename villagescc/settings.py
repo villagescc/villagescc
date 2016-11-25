@@ -79,18 +79,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'cc_db_one',
-        'USER': 'simon',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '',
+        'USER': 'simon'
     },
     'ripple': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'cc_db_two',
-        'USER': 'simon',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '',
+        'USER': 'simon'
     }
 }
 

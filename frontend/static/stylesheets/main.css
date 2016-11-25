@@ -1,15 +1,47 @@
-.navbar-default .navbar-brand {
+.navbar-default {
   color: black; }
 
-.navbar-form input {
+.navbar-form {
   border-radius: 12px; }
 
-.navbar-default .navbar-nav, .navbar-default .navbar-right > li > a {
+.navbar-default {
   color: orange; }
 
 .active-home {
-  background: orange; }
-  .active-home a {
-    color: white !important; }
+  background: orange;
+  color: white !important; }
+
+/* Header file */
+.jumbotron {
+  padding-bottom: 0px; }
+  .jumbotron .jumbotron-image {
+    width: 100%;
+    height: 315px;
+    position: relative; }
+  .jumbotron .jumbotron-content {
+    color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 48px;
+    padding-bottom: 48px;
+    text-align: center; }
+
+.sidenav .nav,
+.nav .nav,
+ul .nav {
+  display: none; }
+
+.sidenav .nav,
+.nav > .active > ul .nav {
+  display: block; }
+
+.sidebar .nav .nav > li > a {
+  color: black;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 30px;
+  font-size: 12px; }
 
 /*# sourceMappingURL=main.css.map */
