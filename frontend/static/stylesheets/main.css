@@ -44,4 +44,10 @@ ul .nav {
   padding-left: 30px;
   font-size: 12px; }
 
+.inline {
+  display: inline-block; }
+
+.btn-20 {
+  width: 20%; }
+
 /*# sourceMappingURL=main.css.map */
