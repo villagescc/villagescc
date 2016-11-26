@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+<!-- Navigation / from plugs -->
+{% include 'plugs/navigation-pre-login.html' %}
+
+<div class="container-fluid" id="profile-container-fluid">
+  <div class="jumbotron" id="profile-jumbotron">
+    <h2>Raja Simon</h2>
+  </div>
+</div>
+
+<section class="container-fluid" id="profile-info">
+  <div class="row">
+    <div class="col-md-8">
+      <p>Owner + Janitor at Moon Machine Surfboards</p>
+      <p>100% Hand shaped and glassed Surfboards here in SF/CA</p>
+      <p>I would love to rent you one of my own surf craft creations or something from my vast collection.</p>
+      <p>Please feel free to contact me with any questions you may have.</p>
+      <a href="#">http://moonmachine.bigcartel.com/</a>
+    </div>
+
+    <div class="col-md-4" style="text-align: center;">
+      <img src="https://randomuser.me/api/portraits/men/81.jpg" alt="" class="img-circle">
+      <p class="profile-star-rating">
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+      </p>
+      <div class="btn-group btn-group-lg" role="group" aria-label="...">
+        <button type="button" class="btn btn-default btn-warning">
+          <i class="fa fa-heart" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btn btn-default btn-success">
+          <i class="fa fa-usd" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btn btn-default btn-danger">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container-fluid" id="profile-listing-info">
+  <div class="row">
+    <div class="col-md-9">
+      <h3>7 open listing</h3>
+      <bold><hr></bold>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail image">
+          <img src="{% static 'images/cover.jpg' %}" alt="...">
+          <p class="profile-listing-image-rate">$30 / Day</p>
+          <p class="profile-listing-image-info bold">9' Long Board</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail image">
+          <img src="{% static 'images/cover.jpg' %}" alt="...">
+          <p class="profile-listing-image-rate">$30 / Day</p>
+          <p class="profile-listing-image-info bold">9' Long Board</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail image">
+          <img src="{% static 'images/cover.jpg' %}" alt="...">
+          <p class="profile-listing-image-rate">$30 / Day</p>
+          <p class="profile-listing-image-info bold">9' Long Board</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail image">
+          <img src="{% static 'images/cover.jpg' %}" alt="...">
+          <p class="profile-listing-image-rate">$30 / Day</p>
+          <p class="profile-listing-image-info bold">9' Long Board</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail image">
+          <img src="{% static 'images/cover.jpg' %}" alt="...">
+          <p class="profile-listing-image-rate">$30 / Day</p>
+          <p class="profile-listing-image-info bold">9' Long Board</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail image">
+          <img src="{% static 'images/cover.jpg' %}" alt="...">
+          <p class="profile-listing-image-rate">$30 / Day</p>
+          <p class="profile-listing-image-info bold">9' Long Board</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail image">
+          <img src="{% static 'images/cover.jpg' %}" alt="...">
+          <p class="profile-listing-image-rate">$30 / Day</p>
+          <p class="profile-listing-image-info bold">9' Long Board</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <p><a href="#"><i class="fa fa-balance-scale" aria-hidden="true"></i> - 7 Hours</a></p>
+      <p><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Designer, UI</a></p>
+      <p><a href="#"><i class="fa fa-home" aria-hidden="true"></i> London, UK</a></p>
+
+      <div class="card">
+        <h4>Offerings</h4>
+        <span class="badge">Massage</span>
+        <span class="badge">Web Design</span>
+        <span class="badge">Child Care</span>
+        <span class="badge">Off Grid</span>
+      </div>
+      <div class="card">
+        <h4>Requests</h4>
+        <span class="badge">Massage</span>
+        <span class="badge">Organic Vegan Food</span>
+        <span class="badge">Help Building</span>
+        <span class="badge">Kids Stuff</span>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
