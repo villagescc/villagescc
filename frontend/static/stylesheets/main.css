@@ -2,6 +2,29 @@
   height: 48px;
   width: 48px; }
 
+#navbar-logo {
+  height: 80px; }
+
+.navtop {
+  margin-top: 15px; }
+
+.navbar-title {
+  margin-left: 12px;
+  font-weight: bold; }
+
+.navbar-form .form-nav-what {
+  border-radius: 25px 0px 0px 25px; }
+.navbar-form .form-nav-location {
+  border-radius: 0px 25px 25px 0px; }
+.navbar-form .input-group {
+  margin-left: -6px; }
+.navbar-form button {
+  border-radius: 18px;
+  border-left: none; }
+
+.navbar-default .navbar-auth > li > a {
+  color: #E97C4A; }
+
 .navbar-default {
   color: black; }
 
@@ -13,12 +36,21 @@
   color: orange; }
 
 .active-home {
-  background: orange;
-  color: white !important; }
+  background: #E97C4A;
+  border-radius: 32px;
+  margin-right: 12px;
+  font-weight: bold; }
+  .active-home a {
+    color: white !important; }
+
+.navbar-left {
+  margin-left: 42px; }
 
 /* Header file */
 .jumbotron {
-  padding-bottom: 0px; }
+  padding-top: 78px;
+  padding-bottom: 0px;
+  background: linear-gradient(to top, white 20%, rgba(255, 255, 255, 0) 80%); }
   .jumbotron .jumbotron-image {
     width: 100%;
     height: 315px;
@@ -29,9 +61,10 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding-top: 48px;
+    padding-top: 88px;
     padding-bottom: 48px;
-    text-align: center; }
+    text-align: center;
+    font-weight: bold; }
 
 .sidenav .nav,
 .nav .nav,
@@ -58,7 +91,7 @@ ul .nav {
 #post-login-menu-item {
   position: fixed;
   width: 100%;
-  padding-top: 78px;
+  padding-top: 88px;
   padding-bottom: 18px; }
 
 #post-login-item {
