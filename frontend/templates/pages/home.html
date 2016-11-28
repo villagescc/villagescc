@@ -45,13 +45,13 @@
       </div>
     </div>
     <div class="col-md-6">
-      <button type="button" class="btn btn-default btn-lg btn-20 pull-right">
+      <button type="button" class="btn btn-default btn-lg btn-20 btn-non-active  pull-right">
         <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Map
       </button>
-      <button type="button" class="btn btn-default btn-lg btn-20 pull-right">
+      <button type="button" class="btn btn-default btn-lg btn-20 btn-non-active pull-right">
         <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> List
       </button>
-      <button type="button" class="btn btn-default btn-lg btn-20 pull-right">
+      <button type="button" class="btn btn-default btn-lg btn-20 btn-active pull-right">
         <span class="glyphicon glyphicon-th" aria-hidden="true"></span> Grid
       </button>
 
@@ -78,33 +78,21 @@
     </div>
     <hr>
     <div class="col-md-9">
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img src="{% static 'images/cover.jpg' %}" alt="...">
-          <div class="caption">
-            <img src="https://randomuser.me/api/portraits/thumb/men/83.jpg" class="img-circle inline"/>
-            <p class="inline">Thumbnail label</p>
+
+      <!-- Given for loop to construct all -->
+      {% for each in listings %}
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail image">
+            <img src="{% static 'images/cover.jpg' %}" alt="...">
+            <p class="thumbnail-tag">$30 / Day</p>
+            <p class="thumbnail-info">9' Long Board</p>
+            <div class="caption">
+              <img src="https://randomuser.me/api/portraits/thumb/men/83.jpg" class="img-circle inline"/>
+              <p class="inline">Thumbnail label</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img src="{% static 'images/cover.jpg' %}" alt="...">
-          <div class="caption">
-            <img src="https://randomuser.me/api/portraits/thumb/men/83.jpg" class="img-circle inline"/>
-            <p class="inline">Thumbnail label</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img src="{% static 'images/cover.jpg' %}" alt="...">
-          <div class="caption">
-            <img src="https://randomuser.me/api/portraits/thumb/men/83.jpg" class="img-circle inline"/>
-            <p class="inline">Thumbnail label</p>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>

@@ -8,7 +8,8 @@ def home(request):
 	returns before login home.
 	url: /home
 	"""
-	return render(request, 'pages/home.html')
+	listings = [1,2,3,4,5,5]
+	return render(request, 'pages/home.html', {'listings': listings})
 
 
 def profile(request):
