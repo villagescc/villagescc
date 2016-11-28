@@ -4,18 +4,26 @@
 
 {% block content %}
 
-<!-- Navigation / from plugs -->
-{% include 'plugs/navigation-pre-login.html' %}
+<!-- Navigation / from plugs / we need to show two plugs here -->
+<!-- 1. if user not logged in comes from pre-login  -->
+<!-- 2. lf user logged in comes from post-login -->
+{% if request.user.is_authenticated %}
+  {% include 'plugs/navigation-post-login.html' %}
+{% else %}
+  {% include 'plugs/navigation-pre-login.html' %}
+{% endif %}
 
-
-<div class="jumbotron">
-  <img src="{% static 'images/cover.jpg' %}" class="jumbotron-image"/>
-  <div class="caption jumbotron-content">
-    <h1>Villages Marketplace</h1>
-    <p>Everyone Has Value to Exchange</p>
-    <p>Decentralized Mutual Credit System</p>
+<!-- Should be hide after the user logged in -->
+{% if not request.user.is_authenticated %}
+  <div class="jumbotron">
+    <img src="{% static 'images/cover.jpg' %}" class="jumbotron-image"/>
+    <div class="caption jumbotron-content">
+      <h1>Villages Marketplace</h1>
+      <p>Everyone Has Value to Exchange</p>
+      <p>Decentralized Mutual Credit System</p>
+    </div>
   </div>
-</div>
+{% endif %}
 
 <section class="container-fluid" id="home-sub-menu">
   <div class="row">
