@@ -16,6 +16,9 @@
     <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
 
 
+    <!-- bootstrap-slider -->
+    <link href="{% static 'seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css' %}" rel="stylesheet">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -39,11 +42,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+
+    <!-- Bootstrap slider -->
+    <script src="{% static 'seiyria-bootstrap-slider/dist/bootstrap-slider.min.js' %}" charset="utf-8"></script>
     <script>
-    $('body').scrollspy({
-        target: '.sidebar',
-        offset: 40
-    });
+    // Without JQuery
+// var slider = new Slider('#ex2', {
+// 	formatter: function(value) {
+// 		return 'Current value: ' + value;
+// 	}
+// });
+
+new Slider("#ex2", { tooltip: 'always', id: "slider12c", min: 0, max: 10, range: true, value: [3, 7] });
     </script>
   </body>
 </html>
