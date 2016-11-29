@@ -13,4 +13,5 @@ def home(request):
 
 
 def profile(request):
-	return render(request, 'pages/profile.html')
+	listings = [1,2,3,4,5,5]
+	return render(request, 'pages/profile.html', {'listings': listings})

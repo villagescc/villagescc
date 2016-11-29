@@ -16,11 +16,13 @@
 <section class="container-fluid" id="profile-info">
   <div class="row">
     <div class="col-md-8">
-      <p>Owner + Janitor at Moon Machine Surfboards</p>
-      <p>100% Hand shaped and glassed Surfboards here in SF/CA</p>
-      <p>I would love to rent you one of my own surf craft creations or something from my vast collection.</p>
-      <p>Please feel free to contact me with any questions you may have.</p>
-      <a href="#">http://moonmachine.bigcartel.com/</a>
+      <div class="inside-profile-info">
+        <p>Owner + Janitor at Moon Machine Surfboards</p>
+        <p>100% Hand shaped and glassed Surfboards here in SF/CA</p>
+        <p>I would love to rent you one of my own surf craft creations or something from my vast collection.</p>
+        <p>Please feel free to contact me with any questions you may have.</p>
+        <a href="#">http://moonmachine.bigcartel.com/</a>
+      </div>
     </div>
 
     <div class="col-md-4" style="text-align: center;">
@@ -53,55 +55,17 @@
       <h3>7 open listing</h3>
       <bold><hr></bold>
       <div class="listing-image">
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail image">
-            <img src="{% static 'images/cover.jpg' %}" alt="...">
-            <p class="profile-listing-image-rate">$30 / Day</p>
-            <p class="profile-listing-image-info bold">9' Long Board</p>
+        <!-- Construct in the for loop -->
+        {% for each in listings %}
+          <div class="col-sm-6 col-md-4">
+            <div class="thumbnail image">
+              <img src="{% static 'images/cover.jpg' %}" alt="...">
+              <p class="thumbnail-tag">$30 / Day</p>
+              <p class="thumbnail-info">9' Long Board</p>
+            </div>
           </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail image">
-            <img src="{% static 'images/cover.jpg' %}" alt="...">
-            <p class="profile-listing-image-rate">$30 / Day</p>
-            <p class="profile-listing-image-info bold">9' Long Board</p>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail image">
-            <img src="{% static 'images/cover.jpg' %}" alt="...">
-            <p class="profile-listing-image-rate">$30 / Day</p>
-            <p class="profile-listing-image-info bold">9' Long Board</p>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail image">
-            <img src="{% static 'images/cover.jpg' %}" alt="...">
-            <p class="profile-listing-image-rate">$30 / Day</p>
-            <p class="profile-listing-image-info bold">9' Long Board</p>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail image">
-            <img src="{% static 'images/cover.jpg' %}" alt="...">
-            <p class="profile-listing-image-rate">$30 / Day</p>
-            <p class="profile-listing-image-info bold">9' Long Board</p>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail image">
-            <img src="{% static 'images/cover.jpg' %}" alt="...">
-            <p class="profile-listing-image-rate">$30 / Day</p>
-            <p class="profile-listing-image-info bold">9' Long Board</p>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail image">
-            <img src="{% static 'images/cover.jpg' %}" alt="...">
-            <p class="profile-listing-image-rate">$30 / Day</p>
-            <p class="profile-listing-image-info bold">9' Long Board</p>
-          </div>
-        </div>
+        {% endfor %}
+
       </div>
 
     </div>
@@ -130,6 +94,86 @@
         <span class="badge">Help Building</span>
         <span class="badge">Kids Stuff</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Relationship with -->
+<section class="container-fluid">
+  <div class="row">
+    <div class="col-md-9">
+      <h3>My Relationship with Dave Platford</h3>
+      <table class="table table-bordered table-relationship">
+        <tbody>
+          <tr>
+            <td>Current Balance</td>
+            <td>8 hours</td>
+          </tr>
+          <tr>
+            <td>Dave platford's endorsement of you</td>
+            <td>5 hours</td>
+          </tr>
+          <tr>
+            <td>Your endorsement of Dave Platford</td>
+            <td>10 hours</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- our transcation history -->
+<section class="container-fluid">
+  <div class="row">
+    <div class="col-md-9">
+      <h3>Our Transaction History</h3>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td>11/20/2016</td>
+            <td>-6 hours</td>
+            <td>Good Job painting</td>
+            <td>
+              <p class="profile-star-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>11/11/2016</td>
+            <td>+ 4 hours</td>
+            <td></td>
+            <td>
+              <p class="profile-star-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>11/9/2016</td>
+            <td>+10 hours</td>
+            <td></td>
+            <td>
+              <p class="profile-star-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>

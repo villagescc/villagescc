@@ -106,10 +106,12 @@ ul .nav {
 
 #profile-jumbotron {
   padding-top: 28px;
-  padding-bottom: 28px; }
+  padding-bottom: 28px;
+  background: lightgray; }
 
 #profile-info {
-  font-size: 18px; }
+  font-size: 18px;
+  min-width: 340px; }
 
 .profile-star-rating {
   margin-left: 4px;
@@ -125,6 +127,9 @@ ul .nav {
 
 .Media-body {
   flex: 1; }
+
+.table-relationship {
+  width: 555px; }
 
 .btn-top-adjust {
   margin-top: 6px;
@@ -202,5 +207,13 @@ ul .nav {
   background: lightgray;
   border-radius: 0px 0px 0px 9px;
   text-align: center; }
+
+.card {
+  height: 126px;
+  width: 100%;
+  padding: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
+  .card h4 {
+    padding-top: 22px; }
 
 /*# sourceMappingURL=main.css.map */
