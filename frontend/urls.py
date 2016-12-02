@@ -5,7 +5,8 @@ from frontend import views
 
 urlpatterns = [
     url(r'^$', views.home),
-    url(r'^profile$', views.profile),
-    url(r'^payment$', views.payment),
-    url(r'^endorsement$', views.endorsement),
+    url(r'^post-login/$', views.post_login),
+    url(r'^profile/$', views.profile),
+    url(r'^payment/$', views.payment),
+    url(r'^endorsement/$', views.endorsement),
 ]
