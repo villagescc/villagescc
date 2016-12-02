@@ -26,6 +26,30 @@
 {% endif %}
 
 <section class="container-fluid" id="home-sub-menu">
+
+  <!--  -->
+  {% if request.user.is_authenticated %}
+  <div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-9">
+      <input type="text" class="form-control" name="" value="">
+      <form class="form-inline">
+        <div class="form-group">
+          <select class="form-control" name="">
+            <option value="">New Idea</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="">Price</label>
+          <input type="text" class="form-control" name="" value="">
+        </div>
+        <input type="submit" class="btn" name="" value="Submit">
+      </form>
+    </div>
+  </div>
+  {% endif %}
   <div class="row">
     <div class="col-md-6">
       <!-- Split button -->
@@ -86,6 +110,8 @@
         data-slider-step="5"
         data-slider-value="[250,450]"
         data-slider-handle="square"/>
+        <br><br>
+        <button type="button" class="btn btn-warning" name="button">Update view</button>
     </div>
     <hr>
     <div class="col-md-9">

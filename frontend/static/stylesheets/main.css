@@ -132,7 +132,6 @@ ul .nav {
   width: 555px; }
 
 .btn-top-adjust {
-  margin-top: 6px;
   margin-left: 39px; }
 
 .btn-20 {
@@ -179,6 +178,9 @@ ul .nav {
 #slider12b .slider-handle {
   background: red; }
 
+#home-sub-menu {
+  margin-top: 120px; }
+
 .thumbnail, .image {
   border: 0px; }
   .thumbnail img, .image img {
@@ -215,5 +217,11 @@ ul .nav {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
   .card h4 {
     padding-top: 22px; }
+
+#payment {
+  margin-top: 118px; }
+
+#endorsement {
+  margin-top: 120px; }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Navigation / from plugs / we need to show two plugs here -->
+<!-- 1. if user not logged in comes from pre-login  -->
+<!-- 2. lf user logged in comes from post-login -->
+{% if request.user.is_authenticated %}
+  {% include 'plugs/navigation-post-login.html' %}
+{% else %}
+  {% include 'plugs/navigation-pre-login.html' %}
+{% endif %}
+
+<section class="container" id="payment">
+    <div class="row">
+        <div class="col-md-12">
+            <input type="text" class="form-control" name="" value="" placeholder="To:">
+            <br>
+            <p class="lead">You can send a trusted payment of up to 8 hours,
+              or a direct Payment of amount</p>
+            <br>
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Send</label>
+                <div class="col-sm-10">
+                  <input type="checkbox" name="" value="Trusted">
+                  <input type="checkbox" name="" value="Direct">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Hours</label>
+                <div class="col-sm-10">
+                  <input type="text" name="" value="">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Testimonial</label>
+                <div class="col-sm-10">
+                  <textarea name="name" rows="8" cols="80"></textarea>
+                </div>
+              </div>
+              <input type="submit" name="" value="Send Acknowledgement">
+
+            </form>
+      </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-9">
+      <h3>Transaction History</h3>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td>Overall Balance</td>
+            <td>-3.00 hours</td>
+          </tr>
+          <tr>
+            <td>Trusted Balance</td>
+            <td>-3.00 hours</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-9">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td>11/20/2016</td>
+            <td>-6 hours</td>
+            <td>Good Job painting</td>
+            <td>
+              <p class="profile-star-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>11/11/2016</td>
+            <td>+ 4 hours</td>
+            <td></td>
+            <td>
+              <p class="profile-star-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>11/9/2016</td>
+            <td>+10 hours</td>
+            <td></td>
+            <td>
+              <p class="profile-star-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

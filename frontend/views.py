@@ -15,3 +15,11 @@ def home(request):
 def profile(request):
 	listings = [1,2,3,4,5,5]
 	return render(request, 'pages/profile.html', {'listings': listings})
+
+
+def payment(request):
+	return render(request, 'pages/payment.html')
+
+
+def endorsement(request):
+	return render(request, 'pages/endorsement.html')
