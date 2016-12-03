@@ -5,17 +5,12 @@
 <!-- Navigation / from plugs / we need to show two plugs here -->
 <!-- 1. if user not logged in comes from pre-login  -->
 <!-- 2. lf user logged in comes from post-login -->
-{% if request.user.is_authenticated %}
   {% include 'plugs/navigation-post-login.html' %}
-{% else %}
-  {% include 'plugs/navigation-pre-login.html' %}
-{% endif %}
-
 <section class="container" id="payment">
   <div class="row">
     <div class="col-md-9">
+      <h2 style="text-align: center;">Payment</h2>
         <form class="form-horizontal">
-
           <!-- Pop up -->
           <div class="form-group">
             <label for="" class="col-sm-2 control-label"></label>
