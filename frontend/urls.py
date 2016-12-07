@@ -4,7 +4,7 @@ from frontend import views
 
 
 urlpatterns = [
-    url(r'^$', views.home),
+    url(r'^$', views.home, name='home'),
     url(r'^post-login/$', views.post_login),
     url(r'^profile/$', views.profile),
     url(r'^payment/$', views.payment),
