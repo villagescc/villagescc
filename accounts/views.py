@@ -2,6 +2,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 # App Forms
 from accounts.forms import RegisterForm
@@ -33,7 +34,6 @@ def login_view(request):
         password = request.POST['password']
         try:
             user = User.objects.get(username=username)
-            from django.contrib.auth import authenticate, login
             user = authenticate(username=username, password=password)
             if user:
                 login(request, user)
@@ -41,3 +41,8 @@ def login_view(request):
         except:
             return render(request, 'login.html')
     return render(request, 'login.html')
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(reverse("frontend:home"))
