@@ -1,0 +1,4 @@
+
+# Basic stuff
+Django==1.9.11
+psycopg2==2.6.2

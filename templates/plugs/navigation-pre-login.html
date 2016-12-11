@@ -12,7 +12,7 @@
         <span class="icon-bar"></span>
       </button>
       <img class="navbar-brand" id="navbar-logo" src="{% static 'images/logo.png' %}" alt="Brand">
-      <a href="#" class="navbar-brand navbar-title navtop">VILLAGES.CC</a>
+      <a href="{% url 'frontend:home' %}" class="navbar-brand navbar-title navtop">VILLAGES.CC</a>
     </div>
 
     <!-- Navbar form -->
@@ -50,8 +50,8 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right navbar-auth">
-        <li><a href="../navbar/">Sign up</a></li>
-        <li><a href="../navbar-static-top/">Log in</a></li>
+        <li><a href="{% url 'accounts:signup' %}">Sign up</a></li>
+        <li><a href="{% url 'accounts:login' %}">Log in</a></li>
         <li class="active-home"><a href="./">+ Post a new listing <span class="sr-only">(current)</span></a></li>
       </ul>
     </div><!--/.nav-collapse -->

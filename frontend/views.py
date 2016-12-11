@@ -9,21 +9,4 @@ def home(request):
 	url: /home
 	"""
 	listings = [1,2,3,4,5,5]
-	return render(request, 'pages/home.html', {'listings': listings})
-
-
-def post_login(request):
-	listings = [1,2,3,5]
-	return render(request, 'pages/post-login.html', {'listings': listings})
-
-def profile(request):
-	listings = [1,2,3,4,5,5]
-	return render(request, 'pages/profile.html', {'listings': listings})
-
-
-def payment(request):
-	return render(request, 'pages/payment.html')
-
-
-def endorsement(request):
-	return render(request, 'pages/endorsement.html')
+	return render(request, 'frontend/home.html', {'listings': listings})

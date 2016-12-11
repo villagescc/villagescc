@@ -22,10 +22,10 @@ def signup_view(request):
             return HttpResponseRedirect(reverse('accounts:login'))
         else:
             print register_form.errors
-            return render(request, 'login.html', {'form': register_form})
+            return render(request, 'accounts/login.html', {'form': register_form})
     else:
         register_form = RegisterForm()
-    return render(request, 'signup.html', {'form': register_form})
+    return render(request, 'accounts/signup.html', {'form': register_form})
 
 
 def login_view(request):
@@ -39,10 +39,15 @@ def login_view(request):
                 login(request, user)
             return HttpResponseRedirect(reverse('frontend:home'))
         except:
-            return render(request, 'login.html')
-    return render(request, 'login.html')
+            return render(request, 'accounts/login.html')
+    return render(request, 'accounts/login.html')
 
 
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("frontend:home"))
+
+
+def profile(request):
+	listings = [1,2,3,4,5,5]
+	return render(request, 'accounts/profile.html', {'listings': listings})

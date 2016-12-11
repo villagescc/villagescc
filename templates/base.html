@@ -35,6 +35,17 @@
   </head>
   <body>
 
+    <!-- Main Navigation -->
+    <!-- Navigation / from plugs / we need to show two plugs here -->
+    <!-- 1. if user not logged in comes from pre-login  -->
+    <!-- 2. lf user logged in comes from post-login -->
+    {% if request.user.is_authenticated %}
+      {% include 'plugs/navigation-post-login.html' %}
+    {% else %}
+      {% include 'plugs/navigation-pre-login.html' %}
+    {% endif %}
+
+
     <!-- Page content -->
     {% block content %}{% endblock content %}
 

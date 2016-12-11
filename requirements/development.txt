@@ -1,0 +1,9 @@
+-r base.txt
+
+django-debug-toolbar==1.4.0
+
+# Testing
+# Python style guide checker
+pep8==1.7.0
+# code analysis for Python
+pylint==1.5.5

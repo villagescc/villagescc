@@ -1,55 +1,17 @@
-{% extends 'base.html' %}
 {% load staticfiles %}
 
-
-{% block content %}
-
-<!-- Navigation / from plugs / we need to show two plugs here -->
-<!-- 1. if user not logged in comes from pre-login  -->
-<!-- 2. lf user logged in comes from post-login -->
-{% if request.user.is_authenticated %}
-  {% include 'plugs/navigation-post-login.html' %}
-{% else %}
-  {% include 'plugs/navigation-pre-login.html' %}
-{% endif %}
-
-<!-- Should be hide after the user logged in -->
-{% if not request.user.is_authenticated %}
-  <div class="jumbotron">
-    <img src="{% static 'images/cover.jpg' %}" class="jumbotron-image"/>
-    <div class="caption jumbotron-content">
-      <h1>Villages Marketplace</h1>
-      <p>Everyone Has Value to Exchange</p>
-      <p>Decentralized Mutual Credit System</p>
-    </div>
+<!-- Jumbotron should be hide after the user logged in -->
+<div class="jumbotron">
+  <img src="{% static 'images/cover.jpg' %}" class="jumbotron-image"/>
+  <div class="caption jumbotron-content">
+    <h1>Villages Marketplace</h1>
+    <p>Everyone Has Value to Exchange</p>
+    <p>Decentralized Mutual Credit System</p>
   </div>
-{% endif %}
+</div>
 
+<!-- Content should be construct with section -->
 <section class="container-fluid" id="home-sub-menu">
-
-  <!--  -->
-  {% if request.user.is_authenticated %}
-  <div class="row">
-    <div class="col-md-3">
-
-    </div>
-    <div class="col-md-9">
-      <input type="text" class="form-control" name="" value="">
-      <form class="form-inline">
-        <div class="form-group">
-          <select class="form-control" name="">
-            <option value="">New Idea</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="">Price</label>
-          <input type="text" class="form-control" name="" value="">
-        </div>
-        <input type="submit" class="btn" name="" value="Submit">
-      </form>
-    </div>
-  </div>
-  {% endif %}
   <div class="row">
     <div class="col-md-6">
       <!-- Split button -->
@@ -135,4 +97,3 @@
     </div>
   </div>
 </section>
-{% endblock content %}
