@@ -7,6 +7,11 @@
 <section class="container" id="accounts-login">
   <div class="row">
     <div class="col-md-12">
+      {% if messages %}
+          {% for message in messages %}
+              {{ message }}
+          {% endfor %}
+      {% endif %}
       <form class="form" action="" method="post">{% csrf_token %}
         <div class="form-group">
           <label for="inputUsername">Username</label>

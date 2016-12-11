@@ -10,17 +10,21 @@
 <section class="container" id="accounts-login">
   <div class="row">
     <div class="col-md-12">
+      {{ form.non_field_errors }}
       <form class="form" action="" method="post">{% csrf_token %}
         <div class="form-group">
           <label for="inputEmail">Email Address</label>
+          {{ form.email.errors }}
           <input type="email" class="form-control" name="email" value="">
         </div>
         <div class="form-group">
           <label for="inputUsername">Username</label>
+          {{ form.username.errors }}
           <input type="text" class="form-control" name="username" value="">
         </div>
         <div class="form-group">
           <label for="inputPassword">Password</label>
+          {{ form.password.errors }}
           <input type="password" class="form-control" name="password" value="">
         </div>
         <input type="submit" class="btn btn-default" value="Submit">
