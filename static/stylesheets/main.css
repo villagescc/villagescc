@@ -1,3 +1,12 @@
+.container {
+  padding-top: 28px; }
+
+.con-padding-top {
+  padding-top: 128px; }
+
+.con-max-width {
+  max-width: 768px; }
+
 .logo {
   height: 48px;
   width: 48px; }
@@ -221,10 +230,10 @@ ul .nav {
 #endorsement {
   margin-top: 120px; }
 
-section {
-  padding-top: 98px; }
+.full-width {
+  width: 100% !important; }
 
-#accounts-login {
-  max-width: 768px; }
+.float-right {
+  float: right; }
 
 /*# sourceMappingURL=main.css.map */

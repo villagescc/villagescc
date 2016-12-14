@@ -50,21 +50,19 @@
     {% block content %}{% endblock content %}
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+    <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
 
     <!-- Bootstrap slider -->
     <script src="{% static 'seiyria-bootstrap-slider/dist/bootstrap-slider.min.js' %}" charset="utf-8"></script>
     <script>
-    // Without JQuery
-// var slider = new Slider('#ex2', {
-// 	formatter: function(value) {
-// 		return 'Current value: ' + value;
-// 	}
-// });
-
-new Slider("#ex2", { tooltip: 'always', id: "slider12c", min: 0, max: 10, range: true, value: [3, 7] });
+      // Without JQuery
+      var elem = document.getElementById('ex2');
+      if (elem) {
+        new Slider("#ex2", { tooltip: 'always', id: "slider12c", min: 0, max: 10, range: true, value: [3, 7] });
+      }
     </script>
   </body>
 </html>

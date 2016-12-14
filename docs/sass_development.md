@@ -2,4 +2,4 @@
 
 ### How to run:
 
-	sass --watch frontend/static/sass:frontend/static/stylesheets
+	sass --watch static/sass:static/stylesheets

@@ -19,9 +19,11 @@ from django.contrib import admin
 # all apps urls import
 from accounts import urls as accounts_urls
 from frontend import urls as frontend_urls
+from payment import urls as payment_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^', include(frontend_urls, namespace='frontend')),
     url(r'^accounts/', include(accounts_urls, namespace='accounts')),
-    url(r'^', include(frontend_urls, namespace='frontend'))
+    url(r'^payment/', include(payment_urls, namespace='payment'))
 ]
