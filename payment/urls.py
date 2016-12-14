@@ -4,5 +4,5 @@ from payment import views
 
 
 urlpatterns = [
-    url(r'^payment$', views.payment, name='payment'),
+    url(r'^$', views.payment, name='payment'),
 ]
