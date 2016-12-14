@@ -10,8 +10,10 @@ from django.contrib.auth import authenticate, login, logout
 # Django User
 from django.contrib.auth.models import User
 
+from accounts.models import Profile
+
 # App Forms
-from accounts.forms import RegisterForm
+from accounts.forms import RegisterForm, UserForm, ProfileCreationForm, ProfileSettingsForm
 
 
 # Create your views here.
@@ -29,16 +31,19 @@ def signup_view(request):
             password = form.cleaned_data['password']
             user = User.objects.create_user(username, email, password)
 
+            obj, created = Profile.objects.get_or_create(user=user)
+
             # Successfull login redirect to login page
             return HttpResponseRedirect(reverse('accounts:login'))
         else:
+            print form.errors
             # If error found we need to show to the frontend using form errors
             # Returning same form contains context of errors attripute
             return render(request, 'accounts/signup.html', {'form': form})
     else:
         # Get method should return empty Form
-        register_form = RegisterForm()
-    return render(request, 'accounts/signup.html', {'form': register_form})
+        form = RegisterForm()
+    return render(request, 'accounts/signup.html', {'form': form})
 
 
 def login_view(request):
@@ -79,5 +84,25 @@ def profile(request):
     """
     Profile takes no arugment and returns the listings attripute
     """
-    listings = [1,2,3,4,5,5]
-    return render(request, 'accounts/profile.html', {'listings': listings})
+    return render(request, 'accounts/profile.html')
+
+
+def settings_view(request):
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, request.FILES, instance=request.user)
+        profile_obj = Profile.objects.get(user=request.user)
+        profile_form = ProfileSettingsForm(request.POST, request.FILES, instance=profile_obj)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            
+            # TODO: Getting password from the request Object and save
+            password = request.POST['password']
+            return HttpResponseRedirect(reverse('accounts:settings'))
+        else:
+            print(user_form.errors)
+            print(profile_form.errors)
+    else:
+        user_form = UserForm()
+        profile_form = ProfileSettingsForm()
+    return render(request, 'accounts/setting.html', {'user_form': user_form, 'profle_form': profile_form})
