@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container con-padding-top con-max-width">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Settings</h2>
+      <form class="form" action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+        <!-- First name  -->
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          {{ form.first_name.errors }}
+          <input type="text" class="form-control" name="first_name"
+            value="{{ request.user.first_name }}">
+        </div>
+
+        <!-- Last name -->
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control" name="last_name"
+            value="{{ request.user.last_name }}">
+        </div>
+
+        <!-- Username -->
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" name="username"
+            value="{{ request.user.username}}">
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="password"
+            placeholder="********">
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" name="email"
+            value="{{ request.user.email }}">
+        </div>
+
+        <!-- Profle -->
+        <div class="form-group">
+          <label for="photo">Profle Photo</label>
+          {{ profle_form.photo }}
+          {{ request.user.profile.photo }}
+        </div>
+        <input type="submit" class="btn btn-primary" name="" value="Submit">
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock content %}

@@ -4,7 +4,7 @@
 {% block content %}
 
 <!-- App page content -->
-<section class="container" id="accounts-login">
+<section class="container con-padding-top con-max-width">
   <div class="row">
     <div class="col-md-12">
       {% if messages %}
@@ -12,7 +12,7 @@
               {{ message }}
           {% endfor %}
       {% endif %}
-      <form class="form" action="" method="post">{% csrf_token %}
+      <form class="form" action="." method="post">{% csrf_token %}
         <div class="form-group">
           <label for="inputUsername">Username</label>
           <input type="text" class="form-control" name="username" value="">
