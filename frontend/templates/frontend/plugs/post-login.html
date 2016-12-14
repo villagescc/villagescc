@@ -39,10 +39,26 @@
       <!-- Forms -->
       <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
         <div class="form-inline">
-          <div class="form-group col-md-2">
+          <div class="form-group col-md-3">
+            <!-- Split button -->
+            <!-- <div class="btn-group">
+              <button type="button" class="btn btn-default btn-lg">All listing types</button>
+              <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Offer</a></li>
+                <li><a href="#">Request</a></li>
+                <li><a href="#">Teach</a></li>
+                <li><a href="#">Learn</a></li>
+                <li><a href="#">Gift</a></li>
+                <li><a href="#">Goal</a></li>
+              </ul>
+            </div> -->
             {{ form.listing_type }}
           </div>
-          <div class="form-group col-md-10">
+          <div class="form-group col-md-9">
             <input type="text" class="form-control full-width input-lg" name="title" value="" placeholder="Garden Help">
           </div>
         </div>
@@ -65,7 +81,7 @@
       </form>
 
       <!-- Options  -->
-      <div class="row" style="    margin-top: 54px;">
+      <div class="row" style="margin-top: 54px;">
         <div class="col-md-6">
           <!-- Split button -->
           <div class="btn-group">

@@ -63,7 +63,14 @@
       </ul>
       <ul class="nav navbar-nav">
         <li><a href="#"><i class="fa fa-bell fa-2x" aria-hidden="true"></i></a></li>
-        <li><img src="/{{ request.user.profile.photo }}" class="img-circle"/></li>
+        <li>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding-top: 12px"><img src="/{{ request.user.profile.photo }}" width=38px height=38px class="img-circle"/></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'accounts:profile' %}">Profile</a></li>
+            <li><a href="#">Mange Listing</a></li>
+            <li><a href="{% url 'accounts:settings' %}">Settings</a></li>
+          </ul>
+        </li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>

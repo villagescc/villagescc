@@ -16,6 +16,9 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 # all apps urls import
 from accounts import urls as accounts_urls
 from frontend import urls as frontend_urls
@@ -26,4 +29,4 @@ urlpatterns = [
     url(r'^', include(frontend_urls, namespace='frontend')),
     url(r'^accounts/', include(accounts_urls, namespace='accounts')),
     url(r'^payment/', include(payment_urls, namespace='payment'))
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
