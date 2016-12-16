@@ -9,14 +9,15 @@
       <p>ALL CATEGORIES</p>
       <nav class="sidebar">
         <ul class="nav sidenav">
-          <li><a href="#items">ITEMS</a>
+          {% for categorie in categories %}
+          <li><a href="#items">{{ categorie }}</a>
             <ul class="nav">
-              <li><a href="#">TOOLS</a></li>
-              <li><a href="#">SPORTS</a></li>
-              <li><a href="#">MUSIC</a></li>
-              <li><a href="#">BOOKS & MAGAZINES</a></li>
+              {% for sub_categories in categories %}
+                <li><a href="#">{{ sub_categories.sub_categories_text }}</a></li>
+              {% endfor %}
             </ul>
           </li>
+          {% endfor %}
         </ul>
       </nav><br><br>
       <input
@@ -40,23 +41,8 @@
       <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
         <div class="form-inline">
           <div class="form-group col-md-3">
-            <!-- Split button -->
-            <!-- <div class="btn-group">
-              <button type="button" class="btn btn-default btn-lg">All listing types</button>
-              <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="caret"></span>
-                <span class="sr-only">Toggle Dropdown</span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a href="#">Offer</a></li>
-                <li><a href="#">Request</a></li>
-                <li><a href="#">Teach</a></li>
-                <li><a href="#">Learn</a></li>
-                <li><a href="#">Gift</a></li>
-                <li><a href="#">Goal</a></li>
-              </ul>
-            </div> -->
             {{ form.listing_type }}
+            <!-- {{ form.fields.listing_type.choices }} -->
           </div>
           <div class="form-group col-md-9">
             <input type="text" class="form-control full-width input-lg" name="title" value="" placeholder="Garden Help">
@@ -72,6 +58,9 @@
             {{ form.price }}
             <!-- <input type="text" class="form-control" name="price" value=""> -->
           </div>
+
+          <!-- Sub Categories -->
+          {{ form.subcategories }}
           <div class="form-group">
             {{ form.photo }}
           </div>
