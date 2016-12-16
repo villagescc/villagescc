@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'frontend.apps.FrontendConfig',
     'endorsement.apps.EndorsementConfig',
     'payment.apps.PaymentConfig',
-    'listings.apps.ListingsConfig'
+    'listings.apps.ListingsConfig',
+    'categories.apps.CategoriesConfig'
 
 ]
 

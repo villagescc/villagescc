@@ -7,6 +7,7 @@ from listings.forms import ListingsForms
 
 # models
 from listings.models import Listings
+from categories.models import Categories
 
 
 # Create your views here.
@@ -16,7 +17,6 @@ def home(request):
     returns before login home.
     url: /home
     """
-
     # POST Request
     if request.method == 'POST':
         form = ListingsForms(request.POST, request.FILES)
@@ -29,4 +29,8 @@ def home(request):
     # GET Request
     listings = Listings.objects.all()
     form = ListingsForms()
-    return render(request, 'frontend/home.html',{'listings': listings,'form': form})
+    categories = Categories.objects.all()
+    return render(request, 'frontend/home.html',{
+        'listings': listings,
+        'form': form,
+        'categories': categories})
