@@ -80,11 +80,15 @@ def logout_view(request):
     return HttpResponseRedirect(reverse("frontend:home"))
 
 
-def profile(request):
+def profile(request, username=None):
     """
     Profile takes no arugment and returns the listings attripute
     """
-    return render(request, 'accounts/profile.html')
+    if username:
+        profile = Profile.objects.get(user__username=username)
+    else:
+        obj = profile.objects.get(user__username=request.user.username)
+    return render(request, 'accounts/profile.html', {'profile': profile})
 
 
 def settings_view(request):
@@ -95,7 +99,7 @@ def settings_view(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            
+
             # TODO: Getting password from the request Object and save
             password = request.POST['password']
             return HttpResponseRedirect(reverse('accounts:settings'))
